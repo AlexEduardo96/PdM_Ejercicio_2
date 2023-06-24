@@ -8,7 +8,7 @@ typedef enum {
   BUTTON_FALLING,
   BUTTON_RISING,
 } fsmButtonState_t;
-/*****************Declare a function struct**********************************/
+/*****************DEclare a function struct**********************************/
 typedef struct {
   int16_t tecla;
   int16_t delay;
@@ -47,7 +47,7 @@ void fsmButtonInit(dbn_t* data) {
   data->estado = BUTTON_UP;
 }
 
-/******************************Function of Button Error ***************************/
+/******************************Function of Button Errorf ***************************/
 void fsmButtonError(dbn_t* data) {
   data->estado = BUTTON_UP;
 }
