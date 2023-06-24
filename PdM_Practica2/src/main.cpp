@@ -15,12 +15,7 @@ const int16_t SW1 = 2;
 const int16_t SW2 = 3;
 
 /************ Finite State Machine for traffic light **********/
-/*typedef enum  {
-  ESTADO_INICIAL,
-  ESTADO_1,
-  ESTADO_2
-}estadoMEF_t;
-*/
+
 estadoMEF_t estadoActual;
 
 //void myPrint(const char* message); 
