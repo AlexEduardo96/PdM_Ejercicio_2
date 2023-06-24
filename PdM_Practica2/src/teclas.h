@@ -81,31 +81,31 @@ void fsmButtonUpdate(dbn_t* data,int16_t SW1, int16_t SW2,int16_t LED_GREEN, int
   switch (data->estado) {
     case BUTTON_UP:
       if (!digitalRead(data->tecla)) {
-        data->estado = BUTTON_FALLING;
+        data->estado = BUTTON_FALLING; //Si se detecta un cambio en el pulsante se manda al estado Falling
       }
       break;
     case BUTTON_DOWN:
       if (digitalRead(data->tecla)) {
-        data->estado = BUTTON_RISING;
+        data->estado = BUTTON_RISING; // Si se detecta un cambio en el pulsante 
       }
       break;
     case BUTTON_FALLING:
       if (nbDelay(data->delay)) {
-        if (!digitalRead(data->tecla)) {
+        if (!digitalRead(data->tecla)) { // Si pasado el tiempo del retardo la tecla cambia de estado mandar a down 
           data->estado = BUTTON_DOWN;
           buttonPressed(data, SW1,SW2,LED_GREEN,LED_YELLOW,LED_RED, printFunc);
         } else {
-          data->estado = BUTTON_UP;
+          data->estado = BUTTON_UP;// Si pasado el tiempo del retardo la tecla cambia de estado mandar a up
         }
       }
       break;
     case BUTTON_RISING:
       if (nbDelay(data->delay)) {
-        if (digitalRead(data->tecla)) {
+        if (digitalRead(data->tecla)) { // Si pasado el tiempo del retardo la tecla cambia de estado mandar a up
           data->estado = BUTTON_UP;
           buttonReleased(data, SW1, SW2, printFunc);
         } else {
-          data->estado = BUTTON_DOWN;
+          data->estado = BUTTON_DOWN; // Si pasado el tiempo del retardo la tecla cambia de estado mandar a down
         }
       }
       break;
