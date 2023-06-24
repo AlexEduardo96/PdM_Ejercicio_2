@@ -1,2 +1,13 @@
 # PdM_Ejercicio_2
 Implementar mediante el modelo de Máquina de Estados Finitos (MEF) el antirrebote de teclas y la lógica de funcionamiento de un semáforo.
+
+##Descripción del Programa 
+###main.cpp
+    En la implementación del 
+
+###Teclas.c
+   Dentro de la configuración de este archivo se encuentra la declaración de las librerías necesario para la ejecución del archivo main.cpp. A demás, se realiza la modularización de las funciones de las teclas para el antirebote y para el retardo no bloqueante, como también las funciones consideradas cuando el usuario presiona cada uno de los pulsantes y deja de presionarlo dado que cambia los estados dependiendo la acción del usuario. En este archivo dentro de los prototipos de las funciones se declara cada una de las variables o estados usados en las funciones.
+###Teclas.h
+    En la configuración de este archivo se empieza declarando las librerias y extensión de archivos que van a ser utilizados, como tambien definimos las variables y los estados que van a ser utilizados dentro de las funciones de este archivo ya sean enumeradas o tipo estructura. Siguiendo la programación se detallan variables globales que estan ubicadas en otrs documentos de forma que puedan ser utilizadas dentro de las funciones de este archivo para ello es importante detallarlas como extern. A demás, se definen prototipos de funciones de forma que las funciones que se encuentren dentro del archivo puedan utilizar valores de funciones de otros archivos. Se crea diferentes funciones como la del retardo no bloqueante, dentro de esta función permite ejecutar más acciones sin esperar que se cumpla el retardo. También se hace el uso de funciones donde  si el botón está en estado "UP" y se presiona, cambia al estado "FALLING", mientras que cuando el botón está en estado "FALLING", espera 40 ms y vuelve a leer el estado del botón. Si el botón sigue presionado, cambia al estado "DOWN" y llama a la función buttonPressed(). Si el botón ya no está presionado, vuelve al estado "UP".Cuando el botón está en estado "DOWN" y se suelta, cambia al estado "RISING", en cuanto el botón está en estado "RISING", espera 40 ms y vuelve a leer el estado del botón. En el caso de que  el botón sigue sin estar presionado, cambia al estado "UP" y llama a la función buttonReleased(). Finalmente si el botón sigue presionado, vuelve al estado "DOWN". 
+
+    Se definen la función en el caso de  que los pulsantes son presionados, estos pulsantes en el caso de que sean inmediatamente presionados cambias de estado ya sea aumentando el valor de velocidad del encendido de las  secuencia de leds o en el cambio de modo de la secuencia integrada normal, alarma o desconectado.  

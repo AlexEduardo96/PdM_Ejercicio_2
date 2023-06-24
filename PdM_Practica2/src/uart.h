@@ -1,7 +1,7 @@
+/****************************Declare libraries***************************/
 #include "Arduino.h"
-
+/***************************Function to print key state**************/
 void myPrint(dbn_t* data){
-  
   if (data->estado == 1){
     Serial.print("Tecla: ");
     Serial.print(data->tecla-1);
