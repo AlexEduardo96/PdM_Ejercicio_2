@@ -17,7 +17,6 @@ typedef struct {
 extern dbn_t dbnSW1;
 extern dbn_t dbnSW2;
 
-
 extern int16_t baseTime;                  // Base time for the program when it starts
 
 int16_t nbDelay(int16_t t_delay) {
