@@ -1,9 +1,37 @@
 # PdM_Ejercicio_2
-Implementar mediante el modelo de Máquina de Estados Finitos (MEF) el antirrebote de teclas y la lógica de funcionamiento de un semáforo.
+Implementación mediante el modelo de Máquina de Estados Finitos (MEF) el antirrebote de teclas y la lógica de funcionamiento de un semáforo.
+
+## Integrantes
+   Alex Eduardo Guerrero Morocho
+   Vicente Paúl Jiménez Ávila
+   UNIVERSIDAD DE CUENCA
+   Facultad de Ingeniería
+   Ingeniería en Telecomunicaciones
 
 ## Descripción del Programa 
 ### main.cpp
-    En la implementación del 
+    En la implementación del código principal solo se declaran los pines a utilizar. En el void setup se indican dichos pines como INPUT u OUTPUT. 
+    Se incluye las librerías necesarias: teclas.h, semaforo.h, Arduino.h, stdio.h y uart.h. Se declara constantes y variables, como las asignaciones de los pines y la declaración de una estructura de datos dbn_t. En la función setup(), configura los pines como entradas o salidas utilizando la función pinMode(). En la función loop(), se lleva a cabo lo siguiente: Se llama a la función InicializarMEF(), que inicializa la Máquina de Estados Finitos (MEF) para los modos del semáforo. Se inicializan dos máquinas de estados finitos para los botones (fsmButtonInit(&dbnSW1) y fsmButtonInit(&dbnSW2)), utilizando la estructura de datos dbn_t. Se inicializa la MEF para el semáforo utilizando la función fsmTrafficLightInit(). Se ejecuta un bucle infinito en el que se actualizan las máquinas de estados finitos para los botones y el semáforo utilizando las funciones fsmButtonUpdate() y fsmTrafficLightUpdate() respectivamente. En cada iteración del bucle, se verifica el estado de los botones y se actualiza el estado del semáforo.
+
+### semaforo.c
+   Se declaran las funciones utilizadas en el archivo semaforo.h necesarios para el funcionamiento del semáforo.
+
+### semaforo.h 
+   El código proporcionado incluye varias funciones relacionadas con una máquina de estados finitos (MEF) que controla el comportamiento de un semáforo. Aquí está la descripción de cada función:
+
+   fsmTrafficLightInit: Esta función inicializa la MEF del semáforo. Establece el modo de funcionamiento en NORMAL_MODE y apaga todos los LEDs.
+
+   setTrafficLightMode: Esta función establece el modo de funcionamiento del semáforo a un valor específico. Apaga todos los LEDs y establece el modo deseado.
+
+   changeTrafficLightMode: Esta función cambia el modo de funcionamiento del semáforo en función del modo actual. Si el modo actual es NORMAL_MODE, cambia al modo DISCONNECTED_MODE. Si el modo actual es DISCONNECTED_MODE, cambia al modo ALARM_MODE. Si el modo actual es ALARM_MODE, cambia de nuevo al modo NORMAL_MODE.
+
+   InicializarMEF: Esta función inicializa la MEF del semáforo en el modo NORMAL_MODE. Establece el estado actual en ESTADO_INICIAL.
+
+   ActualizarMEF: Esta función actualiza el estado de la MEF del semáforo en el modo NORMAL_MODE. Dependiendo del estado actual, enciende y apaga los LEDs en un patrón específico.
+
+   fsmTrafficLightUpdate: Esta función actualiza la MEF del semáforo en función del modo de funcionamiento. En el modo NORMAL_MODE, llama a la función ActualizarMEF para actualizar el estado. En el modo DISCONNECTED_MODE, parpadea el LED amarillo con un retardo de tiempo baseTime.
+
+   En el modo ALARM_MODE, parpadea el LED rojo con un retardo de tiempo baseTime.
 
 ### Teclas.c
    Dentro de la configuración de este archivo se encuentra la declaración de las librerías necesario para la ejecución del archivo main.cpp. A demás, se realiza la modularización de las funciones de las teclas para el antirebote y para el retardo no bloqueante, como también las funciones consideradas cuando el usuario presiona cada uno de los pulsantes y deja de presionarlo dado que cambia los estados dependiendo la acción del usuario. En este archivo dentro de los prototipos de las funciones se declara cada una de las variables o estados usados en las funciones.
